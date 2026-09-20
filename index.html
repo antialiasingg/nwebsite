@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="icon" type="image/png" href="./favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="./favicon/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="./favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="MyWebSite" />
+    <link rel="manifest" href="./favicon/site.webmanifest" />
+
+
+    <link rel="stylesheet" href="styles.css" />
+    <title>noaxial</title>
+  </head>
+
+  <body>
+    <div class="orbit-set">
+      <a
+        class="orbit"
+        href="#"
+        data-panel="about"
+        style="
+          --orbit-radius: 50px;
+          --dot-size: 100px;
+          --label-size: 16px;
+          --angle: 0deg;
+          --speed: 5s;
+          --z: 4;
+          --orbit-color: #777777;
+        "
+      >
+        <span class="dot">
+          <span class="dot-label">about</span>
+        </span>
+      </a>
+
+      <div class="orbit-info" id="about">
+        <button class="close-panel" aria-label="Close panel">×</button>
+        <h3>about</h3>
+        <p>sound / audio-visual artist</p>
+        <p>sounddesign, music and a/v shows</p>
+        <p>experience with Max/MSP</p>
+        <p>based in austria</p>
+      </div>
+
+      <a
+        class="orbit"
+        href="#"
+        data-panel="cv"
+        style="
+          --orbit-radius: 150px;
+          --dot-size: 100px;
+          --label-size: 18px;
+          --angle: 90deg;
+          --speed: 11s;
+          --z: 3;
+          --orbit-color: #999999;
+        "
+      >
+        <span class="dot">
+          <span class="dot-label">cv</span>
+        </span>
+      </a>
+      <div class="orbit-info" id="cv">
+        <button class="close-panel" aria-label="Close panel">×</button>
+        <h3>cv</h3>
+        <table>
+          <tbody>
+            <tr>
+              <td>
+                <strong>2016 - 2021:</strong><br />Higher Federal Technical
+                College and Research Institute Rankweil<br />(HTL Rankweil)
+              </td>
+              <td><strong>Matura</strong></td>
+            </tr>
+            <tr>
+              <td>
+                <p>
+                  <strong>2022 - 2025:</strong><br />University of Applied
+                  Sciences Salzburg
+                </p>
+                <p>MultiMediaArt Audio </p>
+              </td>
+              <td><strong>Bachelor of Arts</strong></td>
+            </tr>
+            <tr>
+              <td>
+                <strong>September 2024 - February 2025:</strong><br />Kling
+                Klang Klong GmbH &amp; Co. KG, Berlin, Deutschland
+                <p>Multimediaprogramming, Sounddesign, Music</p>
+              </td>
+              <td><strong>Internship</strong></td>
+            </tr>
+            <tr>
+              <td>
+                <p>
+                  <strong>February 2025:</strong><br />Kling Klang Klong GmbH
+                  &amp; Co. KG, Berlin, Deutschland
+                </p>
+                <p>Setup of Soundengine at the EXPO 2026 Osaka, Japan</p>
+              </td>
+              <td><strong>International Freelance Experience</strong></td>
+            </tr>
+            <tr>
+              <td>
+                <p>
+                  <strong>2025 - now:</strong><br />University of Applied
+                  Sciences Salzburg
+                </p>
+                <p>MultiMediaArt Audio</p>
+              </td>
+              <td><strong>Master of Arts</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <a
+        class="orbit"
+        href="#"
+        data-panel="contact"
+        style="
+          --orbit-radius: 250px;
+          --dot-size: 100px;
+          --label-size: 24px;
+          --angle: 180deg;
+          --speed: 12s;
+          --z: 2;
+          --orbit-color: #bbbbbb;
+        "
+      >
+        <span class="dot">
+          <span class="dot-label">contact</span>
+        </span>
+      </a>
+      <div class="orbit-info" id="contact">
+        <button class="close-panel" aria-label="Close panel">×</button>
+        <div class="contact-panel">
+          <h3>contact</h3>
+          <ul class="contact-list">
+            <li class="contact-item">
+              <span class="contact-label">e-mail:</span>
+              <a class="contact-link" href="mailto:mail.noaxial@gmail.com"
+                >mail.noaxial@gmail.com</a
+              >
+            </li>
+            <li class="contact-item">
+              <span class="contact-label">instagram:</span>
+              <a
+                class="contact-link"
+                href="https://www.instagram.com/noaxial/"
+                target="_blank"
+                rel="noreferrer"
+                >@noaxial</a
+              >
+            </li>
+            <li class="contact-item">
+              <span class="contact-label">soundcloud:</span>
+              <a
+                class="contact-link"
+                href="https://soundcloud.com/noaxial"
+                target="_blank"
+                rel="noreferrer"
+                >soundcloud.com/noaxial</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <a
+        class="orbit"
+        href="#"
+        data-panel="works"
+        style="
+          --orbit-radius: 350px;
+          --dot-size: 100px;
+          --label-size: 28px;
+          --angle: 270deg;
+          --speed: 14s;
+          --z: 1;
+          --orbit-color: #dddddd;
+        "
+      >
+        <span class="dot">
+          <span class="dot-label">works</span>
+        </span>
+      </a>
+      <div class="orbit-info" id="works">
+        <button class="close-panel" aria-label="Close panel">×</button>
+        <h3>works</h3>
+        <p>work in progress</p>
+      </div>
+
+      <a class="imprint-link" href="#" data-panel="imprint" aria-label="Imprint">
+        imprint
+      </a>
+      <div class="orbit-info" id="imprint">
+        <button class="close-panel" aria-label="Close panel">×</button>
+        <h3>imprint</h3>
+        <div class="imprint-content">
+          <p>
+            Noah Bitschnau<br />
+            Puch bei Hallein<br />
+            5412 Puch bei Hallein, Austria
+          </p>
+
+          <p><strong>contact:</strong></p>
+          <p>
+            e-mail: <a href="mailto:mail.noaxial@gmail.com">mail.noaxial@gmail.com</a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const orbits = document.querySelectorAll(".orbit");
+      const imprintLink = document.querySelector(".imprint-link");
+      const infos = document.querySelectorAll(".orbit-info");
+
+      function closeAllPanels() {
+        infos.forEach((info) => info.classList.remove("visible"));
+        orbits.forEach((item) => item.classList.remove("active"));
+        imprintLink.classList.remove("active");
+      }
+
+      orbits.forEach((orbit) => {
+        orbit.addEventListener("click", (event) => {
+          event.preventDefault();
+
+          const targetId = orbit.dataset.panel;
+          const isAlreadyOpen = orbit.classList.contains("active");
+
+          if (isAlreadyOpen) {
+            closeAllPanels();
+            return;
+          }
+
+          closeAllPanels();
+
+          const targetInfo = document.getElementById(targetId);
+          if (targetInfo) {
+            targetInfo.classList.add("visible");
+          }
+
+          orbit.classList.add("active");
+        });
+      });
+
+      imprintLink.addEventListener("click", (event) => {
+        event.preventDefault();
+
+        const isAlreadyOpen = imprintLink.classList.contains("active");
+
+        if (isAlreadyOpen) {
+          closeAllPanels();
+          return;
+        }
+
+        closeAllPanels();
+
+        const targetInfo = document.getElementById("imprint");
+        if (targetInfo) {
+          targetInfo.classList.add("visible");
+        }
+
+        imprintLink.classList.add("active");
+      });
+
+      document.querySelectorAll(".close-panel").forEach((button) => {
+        button.addEventListener("click", (event) => {
+          event.stopPropagation();
+          closeAllPanels();
+        });
+      });
+    </script>
+  </body>
+</html>
