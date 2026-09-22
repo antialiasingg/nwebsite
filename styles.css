@@ -166,9 +166,9 @@ body {
   height: var(--dot-size);
   margin-left: calc(var(--dot-size) / -2);
   margin-top: calc(var(--dot-size) / -2);
-  border: 2px dashed #000000;
+  background: #ffffff;
   border-radius: 50%;
-  background: #fff;
+  border: none;
   box-sizing: border-box;
 
   display: flex;
@@ -185,7 +185,32 @@ body {
   pointer-events: auto;
 }
 
+.dot::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: repeating-conic-gradient(
+    from 0deg,
+    #000000 0deg 8deg,
+    transparent 8deg 18deg
+  );
+  -webkit-mask: radial-gradient(
+    farthest-side,
+    transparent calc(100% - 2px),
+    #000000 0
+  );
+  mask: radial-gradient(
+    farthest-side,
+    transparent calc(100% - 2px),
+    #000000 0
+  );
+  pointer-events: none;
+}
+
 .dot-label {
+  position: relative;
+  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: center;
