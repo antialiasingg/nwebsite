@@ -6,6 +6,7 @@ body {
   background: #fff;
   font-family: "Lexend", sans-serif;
   padding: 20px;
+  overflow: hidden;
 }
 
 .orbit-set {
@@ -340,8 +341,7 @@ body {
 /* Extra small screens */
 @media (max-width: 480px) {
   .orbit-set {
-    margin-top: 20px;
-    margin-bottom: 60px;
+    margin: 0;
   }
 
   body {
