@@ -23,6 +23,23 @@
   </head>
 
   <body>
+    <aside class="cookie-banner" id="cookie-banner" aria-live="polite">
+      <div class="cookie-banner-inner">
+        <p>
+          This website uses cookies and third-party content to display Bandcamp music embeds.
+          Bandcamp may store cookies when those embeds are loaded. By continuing to use this
+          website, you agree to the use of these cookies. You can refuse them at any time.
+          <a href="#" data-panel="imprint">More information</a>
+        </p>
+        <div class="cookie-actions">
+          <button class="cookie-button" type="button" id="accept-cookies">accept cookies</button>
+          <button class="cookie-button secondary" type="button" id="decline-cookies">
+            only essential
+          </button>
+        </div>
+      </div>
+    </aside>
+
     <div class="orbit-set">
       <a
         class="orbit"
@@ -202,11 +219,17 @@
         <div style="display: flex; flex-direction: column; gap: 24px;">
           <div>
             <h5>lense c◯nt◯rti◯n released on Ukiuki Atama (2021)</h5>
-            <iframe style="border: 0; width: 100%; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/album=176654685/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/" seamless><a href="https://ukiukiatama.bandcamp.com/album/lense-c-nt-rti-n">lense c◯nt◯rti◯n by orchidvial</a></iframe>
+            <div class="bandcamp-embed" data-bandcamp-title="lense c◯nt◯rti◯n by orchidvial" data-bandcamp-src="https://bandcamp.com/EmbeddedPlayer/album=176654685/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/" data-bandcamp-link="https://ukiukiatama.bandcamp.com/album/lense-c-nt-rti-n">
+              <p>Bandcamp embeds are blocked until you accept cookies.</p>
+              <button type="button" data-consent-trigger="true">accept cookies</button>
+            </div>
           </div>
           <div>
-            <h5>SENSORIK released on 𝓰𝓵𝓪𝓶𝓸𝓾𝓻.𝓁𝒶𝒷𝑒𝓁 (2022)</h5>
-            <iframe style="border: 0; width: 100%; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/album=3658844745/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/" seamless><a href="https://xxxglamourxxx.bandcamp.com/album/sensorik">SENSORIK by orchidvial</a></iframe>
+            <h5>SENSORIK released on 𝓰𝓵𝓪𝓶𝓸𝓾𝓻.𝓁𝒶𝒷𝑒𝓵 (2022)</h5>
+            <div class="bandcamp-embed" data-bandcamp-title="SENSORIK by orchidvial" data-bandcamp-src="https://bandcamp.com/EmbeddedPlayer/album=3658844745/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/" data-bandcamp-link="https://xxxglamourxxx.bandcamp.com/album/sensorik">
+              <p>Bandcamp embeds are blocked until you accept cookies.</p>
+              <button type="button" data-consent-trigger="true">accept cookies</button>
+            </div>
           </div>
         </div>
       </div>
@@ -224,6 +247,15 @@
             5412 Puch bei Hallein, Austria
           </p>
 
+          <p><strong>cookie notice:</strong></p>
+          <p>
+            This website may use cookies and similar technologies. The only cookies currently used
+            are the storage needed to remember your cookie choice. Bandcamp embeds are disabled
+            until you consent to loading third-party content. When you accept, Bandcamp may set its
+            own cookies in order to provide the embedded players. You can withdraw consent at any
+            time by clearing the site data or using the browser settings.
+          </p>
+
           <p><strong>contact:</strong></p>
           <p>
             e-mail: <a href="mailto:mail.noaxial@gmail.com">mail.noaxial@gmail.com</a>
@@ -233,22 +265,111 @@
     </div>
 
     <script>
+      const cookieBanner = document.getElementById("cookie-banner");
+      const acceptCookiesButton = document.getElementById("accept-cookies");
+      const declineCookiesButton = document.getElementById("decline-cookies");
       const orbits = document.querySelectorAll(".orbit");
       const imprintLink = document.querySelector(".imprint-link");
       const infos = document.querySelectorAll(".orbit-info");
+      const consentKey = "noaxial-cookie-consent";
+
+      function getStoredConsent() {
+        try {
+          return localStorage.getItem(consentKey) || "";
+        } catch (error) {
+          return "";
+        }
+      }
+
+      function setStoredConsent(choice) {
+        try {
+          localStorage.setItem(consentKey, choice);
+        } catch (error) {
+          // ignore storage errors so the site still works without persisted consent
+        }
+      }
+
+      function loadBandcampEmbeds() {
+        const embedContainers = document.querySelectorAll(".bandcamp-embed");
+
+        embedContainers.forEach((container) => {
+          if (container.dataset.loaded === "true") {
+            return;
+          }
+
+          const iframe = document.createElement("iframe");
+          iframe.src = container.dataset.bandcampSrc;
+          iframe.title = container.dataset.bandcampTitle;
+          iframe.loading = "lazy";
+          iframe.referrerPolicy = "strict-origin-when-cross-origin";
+          iframe.style.border = "0";
+          iframe.style.width = "100%";
+          iframe.style.height = "120px";
+          iframe.setAttribute("allowtransparency", "true");
+          iframe.setAttribute("seamless", "seamless");
+
+          const fallback = document.createElement("a");
+          fallback.href = container.dataset.bandcampLink;
+          fallback.textContent = container.dataset.bandcampTitle;
+          iframe.appendChild(fallback);
+
+          container.replaceWith(iframe);
+          iframe.dataset.loaded = "true";
+        });
+      }
+
+      function setConsent(choice) {
+        setStoredConsent(choice);
+
+        if (choice === "accepted") {
+          loadBandcampEmbeds();
+        }
+
+        if (cookieBanner) {
+          cookieBanner.classList.remove("visible");
+        }
+      }
+
+      function showCookieBanner() {
+        if (cookieBanner) {
+          cookieBanner.classList.add("visible");
+        }
+      }
 
       function closeAllPanels() {
         infos.forEach((info) => info.classList.remove("visible"));
         orbits.forEach((item) => item.classList.remove("active"));
-        imprintLink.classList.remove("active");
+        if (imprintLink) {
+          imprintLink.classList.remove("active");
+        }
       }
 
-      orbits.forEach((orbit) => {
-        orbit.addEventListener("click", (event) => {
+      const storedConsent = getStoredConsent();
+      if (storedConsent === "accepted") {
+        loadBandcampEmbeds();
+      } else {
+        showCookieBanner();
+      }
+
+      acceptCookiesButton?.addEventListener("click", () => setConsent("accepted"));
+      declineCookiesButton?.addEventListener("click", () => setConsent("declined"));
+
+      document.querySelectorAll("[data-consent-trigger='true']").forEach((button) => {
+        button.addEventListener("click", () => setConsent("accepted"));
+      });
+
+      document.querySelectorAll("[data-panel]").forEach((link) => {
+        link.addEventListener("click", (event) => {
           event.preventDefault();
 
-          const targetId = orbit.dataset.panel;
-          const isAlreadyOpen = orbit.classList.contains("active");
+          const targetId = link.dataset.panel;
+          if (!targetId) {
+            return;
+          }
+
+          const isAlreadyOpen =
+            (link === imprintLink && imprintLink.classList.contains("active")) ||
+            (link.classList.contains("active") && targetId !== "imprint");
 
           if (isAlreadyOpen) {
             closeAllPanels();
@@ -262,28 +383,12 @@
             targetInfo.classList.add("visible");
           }
 
-          orbit.classList.add("active");
+          if (targetId === "imprint" && imprintLink) {
+            imprintLink.classList.add("active");
+          } else {
+            link.classList.add("active");
+          }
         });
-      });
-
-      imprintLink.addEventListener("click", (event) => {
-        event.preventDefault();
-
-        const isAlreadyOpen = imprintLink.classList.contains("active");
-
-        if (isAlreadyOpen) {
-          closeAllPanels();
-          return;
-        }
-
-        closeAllPanels();
-
-        const targetInfo = document.getElementById("imprint");
-        if (targetInfo) {
-          targetInfo.classList.add("visible");
-        }
-
-        imprintLink.classList.add("active");
       });
 
       document.querySelectorAll(".close-panel").forEach((button) => {
