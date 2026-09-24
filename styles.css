@@ -255,7 +255,7 @@ body {
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
-  z-index: 50;
+  z-index: 90;
   text-align: left;
 }
 
@@ -434,7 +434,7 @@ body {
   text-decoration: underline;
   text-underline-offset: 0.3em;
   cursor: pointer;
-  z-index: 40;
+  z-index: 120;
   text-transform: lowercase;
   background: transparent;
   border: none;
@@ -483,8 +483,8 @@ body {
 @media (max-width: 480px) {
   .orbit-set {
     margin: 0;
-    width: min(74vw, 300px);
-    transform: scale(0.78);
+    width: min(62vw, 260px);
+    transform: scale(0.62);
     transform-origin: center center;
   }
 
