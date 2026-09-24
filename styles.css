@@ -1,3 +1,7 @@
+:root {
+  --orbit-scale: clamp(0.52, min((100vw - 56px) / 420, (100vh - 120px) / 420), 1);
+}
+
 html {
   width: 100%;
   overflow-x: hidden;
@@ -123,6 +127,8 @@ body {
   width: min(100%, 420px);
   aspect-ratio: 1;
   height: auto;
+  transform: scale(var(--orbit-scale));
+  transform-origin: center center;
 }
 
 .orbit {
