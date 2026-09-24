@@ -516,13 +516,15 @@ body.panel-open .imprint-link {
   }
 
   .orbit-set {
+    --mobile-orbit-size: min(92vw, 360px);
     position: fixed;
     left: 50%;
     top: 50%;
-    width: min(92vw, 360px);
-    height: min(92vw, 360px);
+    width: var(--mobile-orbit-size);
+    height: var(--mobile-orbit-size);
     margin: 0;
-    transform: translate(-50%, -50%);
+    margin-left: calc(var(--mobile-orbit-size) / -2);
+    margin-top: calc(var(--mobile-orbit-size) / -2);
     z-index: 1;
   }
 
