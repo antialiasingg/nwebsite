@@ -1,5 +1,6 @@
 html {
   width: 100%;
+  min-height: 100%;
   overflow-x: hidden;
   box-sizing: border-box;
 }
@@ -124,6 +125,7 @@ body {
   max-width: calc(100vw - 40px);
   aspect-ratio: 1;
   height: auto;
+  z-index: 1;
 }
 
 .orbit {
@@ -481,15 +483,27 @@ body {
 
 /* Extra small screens */
 @media (max-width: 480px) {
-  .orbit-set {
-    margin: 0;
-    width: min(62vw, 260px);
-    transform: scale(0.62);
-    transform-origin: center center;
+  html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
   }
 
   body {
-    padding: 16px;
+    padding: 0;
+    display: block;
+  }
+
+  .orbit-set {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: min(62vw, 260px);
+    height: min(62vw, 260px);
+    margin: 0;
+    transform: translate(-50%, -50%) scale(0.62);
+    transform-origin: center center;
+    z-index: 1;
   }
 
   .orbit-info {
@@ -501,6 +515,7 @@ body {
     height: 100vh;
     max-width: none;
     padding: 56px 16px 72px;
+    z-index: 200;
   }
 
   .orbit-info > *:not(.close-panel) {
@@ -525,6 +540,7 @@ body {
   .imprint-link {
     right: max(12px, calc(12px + env(safe-area-inset-right, 0px)));
     bottom: max(12px, calc(12px + env(safe-area-inset-bottom, 0px)));
+    z-index: 300;
     font-size: 10px;
     padding: 6px;
   }
