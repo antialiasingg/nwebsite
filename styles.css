@@ -489,7 +489,26 @@ body {
   }
 
   .orbit-info {
-    padding: 56px 16px 16px;
+    width: 100vw;
+    max-width: none;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    padding: 56px 16px 72px;
+  }
+
+  .orbit-info > *:not(.close-panel) {
+    width: 100%;
+    max-width: none;
+  }
+
+  .orbit-info h3,
+  .orbit-info p,
+  .orbit-info ul,
+  .orbit-info li,
+  .orbit-info table {
+    max-width: none;
   }
 
   .close-panel {
@@ -499,8 +518,8 @@ body {
   }
 
   .imprint-link {
-    bottom: calc(12px + env(safe-area-inset-bottom, 0px));
-    right: calc(12px + env(safe-area-inset-right, 0px));
+    bottom: max(12px, calc(12px + env(safe-area-inset-bottom, 0px)));
+    right: max(12px, calc(12px + env(safe-area-inset-right, 0px)));
     font-size: 10px;
     padding: 6px;
   }
