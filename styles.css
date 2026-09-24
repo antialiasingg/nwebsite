@@ -1,5 +1,5 @@
 :root {
-  --orbit-scale: clamp(0.52, min((100vw - 56px) / 420, (100vh - 120px) / 420), 1);
+  --orbit-scale: clamp(0.52, (100vw - 56px) / 420, 1);
 }
 
 html {
@@ -125,10 +125,9 @@ body {
 .orbit-set {
   position: relative;
   width: min(100%, 420px);
+  max-width: calc(100vw - 56px);
   aspect-ratio: 1;
   height: auto;
-  transform: scale(var(--orbit-scale));
-  transform-origin: center center;
 }
 
 .orbit {
@@ -142,10 +141,10 @@ body {
   position: absolute;
   left: 50%;
   top: 50%;
-  width: calc(var(--orbit-radius) * 2);
-  height: calc(var(--orbit-radius) * 2);
-  margin-left: calc(var(--orbit-radius) * -1);
-  margin-top: calc(var(--orbit-radius) * -1);
+  width: calc((var(--orbit-radius) * 2) * var(--orbit-scale));
+  height: calc((var(--orbit-radius) * 2) * var(--orbit-scale));
+  margin-left: calc((var(--orbit-radius) * -1) * var(--orbit-scale));
+  margin-top: calc((var(--orbit-radius) * -1) * var(--orbit-scale));
   border: 1px solid #000000;
   border-radius: 50%;
   background: color-mix(in srgb, var(--orbit-color) 15%, transparent);
@@ -180,10 +179,10 @@ body {
   position: absolute;
   left: 50%;
   top: 50%;
-  width: var(--dot-size);
-  height: var(--dot-size);
-  margin-left: calc(var(--dot-size) / -2);
-  margin-top: calc(var(--dot-size) / -2);
+  width: calc(var(--dot-size) * var(--orbit-scale));
+  height: calc(var(--dot-size) * var(--orbit-scale));
+  margin-left: calc((var(--dot-size) / -2) * var(--orbit-scale));
+  margin-top: calc((var(--dot-size) / -2) * var(--orbit-scale));
   background: #ffffff;
   border-radius: 50%;
   border: none;
@@ -234,7 +233,7 @@ body {
   justify-content: center;
   width: 100%;
   height: 100%;
-  font-size: 18px;
+  font-size: calc(18px * var(--orbit-scale));
   animation: orbit-label-spin var(--speed) linear infinite;
   transform-origin: center center;
   user-select: none;
