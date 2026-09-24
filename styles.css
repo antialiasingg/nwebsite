@@ -21,6 +21,10 @@ body {
   overflow: hidden;
 }
 
+body.panel-open {
+  overflow: hidden;
+}
+
 .cookie-banner {
   position: fixed;
   left: 0;
@@ -126,6 +130,14 @@ body {
   aspect-ratio: 1;
   height: auto;
   z-index: 1;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+body.panel-open .orbit,
+body.panel-open .imprint-link {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 }
 
 .orbit {
@@ -259,7 +271,7 @@ body {
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.2s ease, visibility 0.2s ease;
-  z-index: 90;
+  z-index: 120;
   text-align: left;
 }
 
@@ -439,13 +451,17 @@ body {
   text-decoration: underline;
   text-underline-offset: 0.3em;
   cursor: pointer;
-  z-index: 1000;
+  z-index: 30;
   text-transform: lowercase;
   background: transparent;
   border: none;
   padding: 8px;
   font-family: "Lexend", sans-serif;
   transition: color 0.2s ease;
+}
+
+body.panel-open .imprint-link {
+  z-index: 10;
 }
 
 @media (min-width: 640px) {
@@ -562,9 +578,20 @@ body {
     bottom: 12px;
     left: auto;
     top: auto;
-    z-index: 1000;
+    z-index: 30;
     font-size: 10px;
     padding: 6px;
+  }
+
+  body.panel-open .imprint-link {
+    z-index: 10;
+  }
+
+  body.panel-open .orbit,
+  body.panel-open .imprint-link {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
   }
 }
 

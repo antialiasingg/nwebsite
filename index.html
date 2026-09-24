@@ -271,10 +271,18 @@
       const cookieBanner = document.getElementById("cookie-banner");
       const acceptCookiesButton = document.getElementById("accept-cookies");
       const declineCookiesButton = document.getElementById("decline-cookies");
+      const body = document.body;
       const orbits = document.querySelectorAll(".orbit");
       const imprintLink = document.querySelector(".imprint-link");
       const infos = document.querySelectorAll(".orbit-info");
       const consentKey = "noaxial-cookie-consent";
+
+      function syncPanelVisibility() {
+        const hasVisiblePanel = Array.from(infos).some((info) =>
+          info.classList.contains("visible")
+        );
+        body.classList.toggle("panel-open", hasVisiblePanel);
+      }
 
       function getStoredConsent() {
         try {
@@ -345,6 +353,7 @@
         if (imprintLink) {
           imprintLink.classList.remove("active");
         }
+        syncPanelVisibility();
       }
 
       const storedConsent = getStoredConsent();
@@ -385,6 +394,8 @@
           if (targetInfo) {
             targetInfo.classList.add("visible");
           }
+
+          syncPanelVisibility();
 
           if (targetId === "imprint" && imprintLink) {
             imprintLink.classList.add("active");
