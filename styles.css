@@ -239,13 +239,14 @@ body {
 }
 
 .orbit-info {
-  position: fixed;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  width: 100vw;
-  height: 100vh;
+  position: fixed !important;
+  left: 0 !important;
+  top: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  max-width: none !important;
   display: none;
   padding: 64px 20px 20px;
   border: none;
@@ -269,7 +270,7 @@ body {
 }
 
 .orbit-info.visible {
-  display: block;
+  display: block !important;
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
@@ -523,8 +524,10 @@ body {
   }
 
   .orbit-info > *:not(.close-panel) {
-    width: 100%;
-    max-width: none;
+    width: 100% !important;
+    max-width: none !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
   }
 
   .orbit-info h3,
@@ -532,7 +535,9 @@ body {
   .orbit-info ul,
   .orbit-info li,
   .orbit-info table {
-    max-width: none;
+    max-width: none !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
   }
 
   .close-panel {
