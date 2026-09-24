@@ -1,7 +1,3 @@
-:root {
-  --orbit-scale: clamp(0.52, (100vw - 56px) / 420, 1);
-}
-
 html {
   width: 100%;
   overflow-x: hidden;
@@ -125,7 +121,7 @@ body {
 .orbit-set {
   position: relative;
   width: min(100%, 420px);
-  max-width: calc(100vw - 56px);
+  max-width: calc(100vw - 40px);
   aspect-ratio: 1;
   height: auto;
 }
@@ -141,10 +137,10 @@ body {
   position: absolute;
   left: 50%;
   top: 50%;
-  width: calc((var(--orbit-radius) * 2) * var(--orbit-scale));
-  height: calc((var(--orbit-radius) * 2) * var(--orbit-scale));
-  margin-left: calc((var(--orbit-radius) * -1) * var(--orbit-scale));
-  margin-top: calc((var(--orbit-radius) * -1) * var(--orbit-scale));
+  width: calc(var(--orbit-radius) * 2);
+  height: calc(var(--orbit-radius) * 2);
+  margin-left: calc(var(--orbit-radius) * -1);
+  margin-top: calc(var(--orbit-radius) * -1);
   border: 1px solid #000000;
   border-radius: 50%;
   background: color-mix(in srgb, var(--orbit-color) 15%, transparent);
@@ -179,10 +175,10 @@ body {
   position: absolute;
   left: 50%;
   top: 50%;
-  width: calc(var(--dot-size) * var(--orbit-scale));
-  height: calc(var(--dot-size) * var(--orbit-scale));
-  margin-left: calc((var(--dot-size) / -2) * var(--orbit-scale));
-  margin-top: calc((var(--dot-size) / -2) * var(--orbit-scale));
+  width: var(--dot-size);
+  height: var(--dot-size);
+  margin-left: calc(var(--dot-size) / -2);
+  margin-top: calc(var(--dot-size) / -2);
   background: #ffffff;
   border-radius: 50%;
   border: none;
@@ -233,7 +229,7 @@ body {
   justify-content: center;
   width: 100%;
   height: 100%;
-  font-size: calc(18px * var(--orbit-scale));
+  font-size: 18px;
   animation: orbit-label-spin var(--speed) linear infinite;
   transform-origin: center center;
   user-select: none;
@@ -482,6 +478,9 @@ body {
 @media (max-width: 480px) {
   .orbit-set {
     margin: 0;
+    width: min(74vw, 300px);
+    transform: scale(0.78);
+    transform-origin: center center;
   }
 
   body {
