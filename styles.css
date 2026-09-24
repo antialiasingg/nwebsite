@@ -125,10 +125,11 @@ body.panel-open {
 
 .orbit-set {
   position: relative;
-  width: min(100%, 420px);
-  max-width: calc(100vw - 40px);
+  width: min(100%, 700px);
+  max-width: calc(100vw - 48px);
   aspect-ratio: 1;
   height: auto;
+  --orbit-scale: 1;
   z-index: 1;
   transition: opacity 0.2s ease, visibility 0.2s ease;
 }
@@ -159,6 +160,8 @@ body.panel-open .imprint-link {
   border-radius: 50%;
   background: color-mix(in srgb, var(--orbit-color) 15%, transparent);
   box-sizing: border-box;
+  transform: scale(var(--orbit-scale));
+  transform-origin: center;
   display: block;
   text-decoration: none;
   color: inherit;
@@ -177,6 +180,8 @@ body.panel-open .imprint-link {
   margin-top: -5px;
   background: #000000;
   border-radius: 50%;
+  transform: scale(var(--orbit-scale));
+  transform-origin: center;
   z-index: 0;
   pointer-events: none;
 }
@@ -516,15 +521,13 @@ body.panel-open .imprint-link {
   }
 
   .orbit-set {
-    --mobile-orbit-size: min(92vw, 360px);
     position: fixed;
     left: 50%;
     top: 50%;
-    width: var(--mobile-orbit-size);
-    height: var(--mobile-orbit-size);
+    width: min(100%, 700px);
+    height: auto;
     margin: 0;
-    margin-left: calc(var(--mobile-orbit-size) / -2);
-    margin-top: calc(var(--mobile-orbit-size) / -2);
+    transform: translate(-50%, -50%);
     z-index: 1;
   }
 
@@ -599,7 +602,7 @@ body.panel-open .imprint-link {
 /* Landscape orientation on small screens */
 @media (max-height: 500px) {
   .orbit-set {
-    margin: 10px 0;
+    margin: 0;
   }
 
   .orbit-info {

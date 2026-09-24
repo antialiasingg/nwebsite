@@ -291,6 +291,7 @@
 
         orbitSet.style.width = `${targetSize}px`;
         orbitSet.style.height = `${targetSize}px`;
+        orbitSet.style.setProperty("--orbit-scale", targetSize / baseSize);
       }
 
       function syncPanelVisibility() {
