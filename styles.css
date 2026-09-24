@@ -549,10 +549,10 @@ body.panel-open .imprint-link {
   }
 
   .orbit-info > *:not(.close-panel) {
-    width: 100%;
+    width: calc(100% - 24px);
     max-width: none;
-    margin-left: 0;
-    margin-right: 0;
+    margin-left: 12px;
+    margin-right: 12px;
   }
 
   .orbit-info h3,
