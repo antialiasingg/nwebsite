@@ -441,8 +441,8 @@ body.panel-open .imprint-link {
 
 .imprint-link {
   position: fixed;
-  right: 16px;
-  bottom: 16px;
+  right: calc(16px + env(safe-area-inset-right));
+  bottom: calc(16px + env(safe-area-inset-bottom));
   left: auto;
   top: auto;
   font-size: 12px;
@@ -466,8 +466,8 @@ body.panel-open .imprint-link {
 
 @media (min-width: 640px) {
   .imprint-link {
-    bottom: 24px;
-    right: 24px;
+    bottom: calc(24px + env(safe-area-inset-bottom));
+    right: calc(24px + env(safe-area-inset-right));
     font-size: 14px;
     padding: 0;
   }
@@ -574,8 +574,8 @@ body.panel-open .imprint-link {
 
   .imprint-link {
     position: fixed;
-    right: 12px;
-    bottom: 12px;
+    right: calc(12px + env(safe-area-inset-right));
+    bottom: calc(12px + env(safe-area-inset-bottom));
     left: auto;
     top: auto;
     z-index: 30;
