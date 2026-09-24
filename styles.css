@@ -527,7 +527,8 @@ body.panel-open .imprint-link {
     width: min(100%, 700px);
     height: auto;
     margin: 0;
-    transform: translate(-50%, -50%);
+    margin-left: calc(var(--orbit-stage-size) / -2);
+    margin-top: calc(var(--orbit-stage-size) / -2);
     z-index: 1;
   }
 
